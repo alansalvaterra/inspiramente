@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 
 @Component({
-  selector: 'app-read',
+  selector: 'app-listacard',
   standalone: true,
   imports: [NgIf, NgFor, CardComponent],
-  templateUrl: './read.component.html',
-  styleUrl: './read.component.css'
+  templateUrl: './listacard.component.html',
+  styleUrl: './listacard.component.css'
 })
-export class ReadComponent {
+export class ListaCardComponent {
 
   thoughts = [
     {
@@ -27,6 +27,14 @@ export class ReadComponent {
     {
       mensagem: 'Testando mensagem de card 4.',
       autor: 'Alan Salvaterra 4'
+    },
+    {
+      mensagem: 'Testando mensagem de card 5.',
+      autor: 'Alan Salvaterra 5'
+    },
+    {
+      mensagem: 'Testando mensagem de card 6.',
+      autor: 'Alan Salvaterra 6'
     },
   ];
 

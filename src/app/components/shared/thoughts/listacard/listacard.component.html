@@ -1,5 +1,5 @@
 <section class="container" *ngIf="thoughts.length > 0">
-  <div class="card" *ngFor="let thought of thoughts">
+  <div *ngFor="let thought of thoughts">
     <app-card [mensagem]="thought.mensagem" [autor]="thought.autor"></app-card>
   </div>
 </section>
