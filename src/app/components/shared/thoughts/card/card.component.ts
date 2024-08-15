@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-  @Input() message: string = '';
-  @Input() author: string = '';
+  @Input() mensagem: string = '';
+  @Input() autor: string = '';
 }

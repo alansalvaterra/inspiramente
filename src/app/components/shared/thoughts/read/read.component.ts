@@ -13,20 +13,20 @@ export class ReadComponent {
 
   thoughts = [
     {
-      message: 'Testando mensagem de card 1.',
-      author: 'Alan Salvaterra 1'
+      mensagem: 'Testando mensagem de card 1.',
+      autor: 'Alan Salvaterra 1'
     },
     {
-      message: 'Testando mensagem de card 2.',
-      author: 'Alan Salvaterra 2'
+      mensagem: 'Testando mensagem de card 2.',
+      autor: 'Alan Salvaterra 2'
     },
     {
-      message: 'Testando mensagem de card 3.',
-      author: 'Alan Salvaterra 3'
+      mensagem: 'Testando mensagem de card 3.',
+      autor: 'Alan Salvaterra 3'
     },
     {
-      message: 'Testando mensagem de card 4.',
-      author: 'Alan Salvaterra 4'
+      mensagem: 'Testando mensagem de card 4.',
+      autor: 'Alan Salvaterra 4'
     },
   ];
 
