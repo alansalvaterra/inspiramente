@@ -13,29 +13,17 @@ export class ListaCardComponent {
 
   thoughts = [
     {
-      mensagem: 'Testando mensagem de card 1.',
+      mensagem: 'Testando.',
       autor: 'Alan Salvaterra 1'
     },
     {
-      mensagem: 'Testando mensagem de card 2.',
-      autor: 'Alan Salvaterra 2'
+      mensagem: 'Mensagem de card 2.',
+      autor: 'Alan 2'
     },
     {
-      mensagem: 'Testando mensagem de card 3.',
-      autor: 'Alan Salvaterra 3'
-    },
-    {
-      mensagem: 'Testando mensagem de card 4.',
-      autor: 'Alan Salvaterra 4'
-    },
-    {
-      mensagem: 'Testando mensagem de card 5.',
-      autor: 'Alan Salvaterra 5'
-    },
-    {
-      mensagem: 'Testando mensagem de card 6.',
-      autor: 'Alan Salvaterra 6'
-    },
+      mensagem: 'Novo Pensamento.',
+      autor: 'Salvaterra 3'
+    }
   ];
 
 }
