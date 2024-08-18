@@ -52,10 +52,15 @@
     </section>
 
     <section>
-        <app-button [text]="'Salvar'" [route]="'/home'" (btnClick)="salvaPensamento()">
+        <app-button 
+            [text]="'Salvar'" 
+            (btnClick)="salvaPensamento()">
         </app-button>
 
-        <app-button [text]="'Cancelar'" [route]="'/home'" (btnClick)="navigateTo($event)">
+        <app-button 
+            [text]="'Cancelar'" 
+            [route]="'/home'" 
+            (btnClick)="navigateTo($event)">
         </app-button>
     </section>
 </form>

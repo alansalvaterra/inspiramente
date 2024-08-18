@@ -32,7 +32,8 @@ export class NovoPensamentoComponent {
 
   salvaPensamento(): void {
     this.service.salvaPensamento(this.novopensamento).subscribe(() => {
-      this.navigateTo('lista-pensamentos');
+      alert('Pensamento salvo com sucesso!');
+      this.navigateTo('home');
     });
   }
   

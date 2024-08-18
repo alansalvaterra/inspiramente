@@ -18,5 +18,6 @@ export class PensamentoService {
   
   salvaPensamento(pensamento: any): Observable<any> {
     return this.http.post(this.API, pensamento);
+    
   }
 }
