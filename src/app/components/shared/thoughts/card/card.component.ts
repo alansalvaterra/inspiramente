@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import type { IPensamento } from '../../../../interfaces/IPensamento';
 
 @Component({
   selector: 'app-card',
@@ -8,6 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-  @Input() mensagem: string = '';
-  @Input() autor: string = '';
+  @Input() pensamento!: IPensamento;
 }

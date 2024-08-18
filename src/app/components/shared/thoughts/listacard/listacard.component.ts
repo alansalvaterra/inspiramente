@@ -1,6 +1,8 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardComponent } from '../card/card.component';
+import { IPensamento } from '../../../../interfaces/IPensamento';
+import { PensamentoService } from '../../../../services/pensamento.service';
 
 @Component({
   selector: 'app-listacard',
@@ -9,21 +11,15 @@ import { CardComponent } from '../card/card.component';
   templateUrl: './listacard.component.html',
   styleUrl: './listacard.component.css'
 })
-export class ListaCardComponent {
+export class ListaCardComponent implements OnInit {
 
-  thoughts = [
-    {
-      mensagem: 'Testando.',
-      autor: 'Alan Salvaterra 1'
-    },
-    {
-      mensagem: 'Mensagem de card 2.',
-      autor: 'Alan 2'
-    },
-    {
-      mensagem: 'Novo Pensamento.',
-      autor: 'Salvaterra 3'
-    }
-  ];
+  listaPensamentos: IPensamento[] = [];
 
+  constructor(private service: PensamentoService) { }
+
+  ngOnInit(): void {
+    this.service.listar().subscribe((listaPensamentos) => {
+      this.listaPensamentos = listaPensamentos
+    })
+  }
 }
