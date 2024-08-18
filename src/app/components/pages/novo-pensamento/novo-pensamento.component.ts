@@ -3,6 +3,8 @@ import { NavigationService } from '../../../services/navigation.service';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { CardComponent } from '../../shared/thoughts/card/card.component';
 import { FormsModule } from '@angular/forms';
+import { PensamentoService } from '../../../services/pensamento.service';
+import type { IPensamento } from '../../../interfaces/IPensamento';
 
 @Component({
   selector: 'app-novo-pensamento',
@@ -17,16 +19,21 @@ import { FormsModule } from '@angular/forms';
 })
 export class NovoPensamentoComponent {
   
-  novopensamento = {
-    conteudo: '',
-    autoria: '',
-    modelo: ''
+  novopensamento: IPensamento = {
+    mensagem: '',
+    autor: '',
+    modelo: 1
   };
 
-  constructor(private navigationService: NavigationService) {}
+  constructor(
+    private navigationService: NavigationService,
+    private service: PensamentoService
+  ) {}
 
   salvaPensamento(): void {
-    alert('Pensamento salvo');
+    this.service.salvaPensamento(this.novopensamento).subscribe(() => {
+      this.navigateTo('lista-pensamentos');
+    });
   }
   
   navigateTo(route: string): void {

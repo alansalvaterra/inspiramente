@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { IPensamento } from '../../../../interfaces/IPensamento';
 import { PensamentoService } from '../../../../services/pensamento.service';
@@ -11,7 +11,7 @@ import { PensamentoService } from '../../../../services/pensamento.service';
   templateUrl: './listacard.component.html',
   styleUrl: './listacard.component.css'
 })
-export class ListaCardComponent implements OnInit {
+export class ListaCardComponent {
 
   listaPensamentos: IPensamento[] = [];
 

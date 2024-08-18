@@ -8,7 +8,7 @@
                 id="pensamento" 
                 placeholder="Digite o pensamento"
                 name="pensamento"
-                [(ngModel)]="novopensamento.conteudo"
+                [(ngModel)]="novopensamento.mensagem"
             />
             <label for="autor">Autor:</label>
             <input
@@ -16,7 +16,7 @@
                 id="autor" 
                 placeholder="Digite a autoria ou fonte" 
                 name="autor"
-                [(ngModel)]="novopensamento.autoria"
+                [(ngModel)]="novopensamento.autor"
             />
 
         <p>Selecione o modelo do seu card:</p>
@@ -48,7 +48,7 @@
 
     <section>
         <h3>Prévia</h3>
-        <!-- <app-card [mensagem]="novopensamento.conteudo" [autor]="novopensamento.autoria"></app-card> -->
+        <app-card [pensamento]="novopensamento"></app-card>
     </section>
 
     <section>
