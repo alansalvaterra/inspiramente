@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import type { IPensamento } from '../../../../interfaces/IPensamento';
+import { IPensamento } from '../../../../interfaces/IPensamento';
+import { PensamentoService } from '../../../../services/pensamento.service';
 
 @Component({
   selector: 'app-card',
@@ -10,4 +11,23 @@ import type { IPensamento } from '../../../../interfaces/IPensamento';
 })
 export class CardComponent {
   @Input() pensamento!: IPensamento;
+
+  constructor(
+    private service: PensamentoService
+  ) { }
+
+  deletaPensamento(): void {
+    if (this.pensamento.id !== undefined) {
+        this.service.deletaPensamento(this.pensamento.id).subscribe({
+            next: (response) => {
+                // Exibindo o texto retornado pelo backend
+                alert(response); 
+            },
+            error: (error) => {
+                console.error('Erro ao deletar o pensamento:', error);
+                alert('Erro ao deletar o pensamento.');
+            }
+        });
+    }
+}
 }
