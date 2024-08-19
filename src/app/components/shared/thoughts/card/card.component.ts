@@ -16,6 +16,7 @@ export class CardComponent {
     private service: PensamentoService
   ) { }
 
+  //TODO: Renderizar página com pensamentos atualizados após exclusão do pensamento
   deletaPensamento(): void {
     if (this.pensamento.id !== undefined) {
         this.service.deletaPensamento(this.pensamento.id).subscribe({
