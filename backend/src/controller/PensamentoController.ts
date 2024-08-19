@@ -10,6 +10,19 @@ export class PensamentoController {
         return this.pensamentoRepository.find()
     }
 
+    async one(request: Request, response: Response, next: NextFunction) {
+        const id = parseInt(request.params.id)
+
+        const user = await this.pensamentoRepository.findOne({
+            where: { id }
+        })
+
+        if (!user) {
+            return "Pensamento não encontrado"
+        }
+        return user
+    }
+
     async save(request: Request, response: Response, next: NextFunction) {
         const { mensagem, autor, modelo } = request.body;
         const pensamento = Object.assign(new Pensamento(), {
@@ -20,47 +33,37 @@ export class PensamentoController {
 
         return this.pensamentoRepository.save(pensamento)
     }
+
+    async remove(request: Request, response: Response, next: NextFunction) {
+        const id = parseInt(request.params.id)
+
+        let pensamentoDeletado = await this.pensamentoRepository.findOneBy({ id })
+
+        if (!pensamentoDeletado) {
+            return "Pensamento não encontrado"
+        }
+
+        await this.pensamentoRepository.remove(pensamentoDeletado)
+
+        return "Pensamento removido"
+    }
+
+    async update(request: Request, response: Response, next: NextFunction) {
+        const id = parseInt(request.params.id)
+
+        let penamentoAtualizado = await this.pensamentoRepository.findOneBy({ id })
+
+        if (!penamentoAtualizado) {
+            return "Pensamento não encontrado"
+        }
+
+        await this.pensamentoRepository.update(penamentoAtualizado, request.body)
+
+        return "Pensamento atualizado"
+    }
 }
-    // async one(request: Request, response: Response, next: NextFunction) {
-    //     const id = parseInt(request.params.id)
 
 
-    //     const user = await this.userRepository.findOne({
-    //         where: { id }
-    //     })
 
-    //     if (!user) {
-    //         return "unregistered user"
-    //     }
-    //     return user
-    // }
 
-    
 
-    // async remove(request: Request, response: Response, next: NextFunction) {
-    //     const id = parseInt(request.params.id)
-
-    //     let userToRemove = await this.userRepository.findOneBy({ id })
-
-    //     if (!userToRemove) {
-    //         return "this user not exist"
-    //     }
-
-    //     await this.userRepository.remove(userToRemove)
-
-    //     return "user has been removed"
-    // }
-
-    // async update(request: Request, response: Response, next: NextFunction) {
-    //     const id = parseInt(request.params.id)
-
-    //     let userToUpdate = await this.userRepository.findOneBy({ id })
-
-    //     if (!userToUpdate) {
-    //         return "this user not exist"
-    //     }
-
-    //     await this.userRepository.update(userToUpdate, request.body)
-
-    //     return "user has been updated"
-    // }
