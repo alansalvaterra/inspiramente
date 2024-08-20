@@ -44,6 +44,7 @@ export class ExcluirPensamentoComponent {
   excluirPensamento() {
     if(this.pensamento.id) {
       this.service.deletaPensamento(this.pensamento.id).subscribe(() => {
+        alert('Pensamento excluído com sucesso!');
         this.router.navigate(['/home'])
       })
     }
