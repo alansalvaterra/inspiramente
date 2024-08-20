@@ -5,6 +5,7 @@ import { CardComponent } from '../../shared/thoughts/card/card.component';
 import { FormsModule } from '@angular/forms';
 import { PensamentoService } from '../../../services/pensamento.service';
 import type { IPensamento } from '../../../interfaces/IPensamento';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-novo-pensamento',
@@ -22,18 +23,20 @@ export class NovoPensamentoComponent {
   novopensamento: IPensamento = {
     mensagem: '',
     autor: '',
-    modelo: 1
+    modelo: 0
   };
 
   constructor(
     private navigationService: NavigationService,
-    private service: PensamentoService
+    private service: PensamentoService,    
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   salvaPensamento(): void {
     this.service.salvaPensamento(this.novopensamento).subscribe(() => {
       alert('Pensamento salvo com sucesso!');
-      this.navigateTo('home');
+      this.router.navigate(['/home'])
     });
   }
   

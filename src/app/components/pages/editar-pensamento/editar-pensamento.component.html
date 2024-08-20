@@ -1,0 +1,66 @@
+<h2>Altere o pensamento:</h2>
+
+<form>
+    <section>
+            <label for="pensamento">Pensamento:</label>
+            <input
+                type="textarea" 
+                id="pensamento" 
+                placeholder="Digite o pensamento"
+                name="pensamento"
+                [(ngModel)]="pensamento.mensagem"
+            />
+            <label for="autor">Autor:</label>
+            <input
+                type="textarea" 
+                id="autor" 
+                placeholder="Digite a autoria ou fonte" 
+                name="autor"
+                [(ngModel)]="pensamento.autor"
+            />
+
+        <p>Selecione o modelo do seu card:</p>
+        <ul>
+            <li>
+                <label for="modelo1">
+                    <input 
+                        type="radio" 
+                        id="modelo1" 
+                        name="modelo" 
+                        value="modelo1" 
+                    />
+                    Modelo 1
+                </label>
+            </li>
+            <li>
+                <label for="modelo2">
+                    <input
+                        type="radio" 
+                        id="modelo2" 
+                        name="modelo" 
+                        value="modelo2" 
+                    />
+                    Modelo 2
+                </label>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Prévia</h3>
+        <app-card [pensamento]="pensamento"></app-card>
+    </section>
+
+    <section>
+        <app-button 
+            [text]="'Salvar'" 
+            (btnClick)="editaPensamento()">
+        </app-button>
+
+        <app-button 
+            [text]="'Cancelar'" 
+            [route]="'/home'" 
+            (btnClick)="navigateTo($event)">
+        </app-button>
+    </section>
+</form>

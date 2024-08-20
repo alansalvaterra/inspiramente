@@ -13,6 +13,10 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) { }
 
+  salvaPensamento(pensamento: IPensamento): Observable<IPensamento> {
+    return this.http.post<IPensamento>(this.API, pensamento);
+  }
+
   listar(): Observable<IPensamento[]> {
     return this.http.get<IPensamento[]>(this.API)
   }
@@ -21,8 +25,8 @@ export class PensamentoService {
     return this.http.get<IPensamento>(`${this.API}/${id}`);
   }
   
-  salvaPensamento(pensamento: IPensamento): Observable<IPensamento> {
-    return this.http.post<IPensamento>(this.API, pensamento);
+  editaPensamento(pensamento: IPensamento): Observable<IPensamento> {
+    return this.http.put<IPensamento>(`${this.API}/${pensamento.id}`, pensamento);
   }
 
   deletaPensamento(id: number): Observable<string> {
