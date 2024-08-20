@@ -1,14 +1,11 @@
 <main>
 
     <section class="container">
-        <div><h2>Mural de Pensamentos</h2></div>
+        <div>
+            <h2>Mural de Pensamentos</h2>
+        </div>
+        <app-button [text]="'Adicionar Pensamento'" [route]="'/novopensamento'" (btnClick)="navigateTo($event)">
+        </app-button>
         <app-listacard></app-listacard>
     </section>
-
-    <app-button 
-        [text]="'Adicionar Pensamento'" 
-        [route]="'/novopensamento'" 
-        (btnClick)="navigateTo($event)">
-    </app-button>
-
 </main>

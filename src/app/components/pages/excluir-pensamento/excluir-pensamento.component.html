@@ -1,0 +1,9 @@
+<section>
+    <h2>O pensamento será apagado. <br> Confirma a exclusão?</h2>
+    <div class="acoes">
+        <app-button [text]="'Excluir Pensamento'" (btnClick)="excluirPensamento()">
+        </app-button>
+        <app-button [text]="'Cancelar'" [route]="'/home'" (btnClick)="navigateTo($event)">
+        </app-button>
+    </div>
+</section>

@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { IPensamento } from '../../../../interfaces/IPensamento';
 import { PensamentoService } from '../../../../services/pensamento.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
@@ -16,19 +17,4 @@ export class CardComponent {
     private service: PensamentoService
   ) { }
 
-  //TODO: Renderizar página com pensamentos atualizados após exclusão do pensamento
-  deletaPensamento(): void {
-    if (this.pensamento.id !== undefined) {
-        this.service.deletaPensamento(this.pensamento.id).subscribe({
-            next: (response) => {
-                // Exibindo o texto retornado pelo backend
-                alert(response); 
-            },
-            error: (error) => {
-                console.error('Erro ao deletar o pensamento:', error);
-                alert('Erro ao deletar o pensamento.');
-            }
-        });
-    }
-}
 }
