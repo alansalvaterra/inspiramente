@@ -25,3 +25,22 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+TODO List:
+Style
+	Estilo geral
+	Reset
+	Paleta de cores
+	Imagem IA banner
+	Responsividade
+
+Funcionalidades
+	Formulario (max e min de caracteres, campos em branco)
+	Modelo 1, 2, 3 com cores distintas
+	Link para README com especificação do projeto
+	Truncar tabela ao iniciar aplicação
+	Apresentar mensagem quando não houverem pensamentos cadastrados
+
+Produção
+	Avaliar se subirá para produção
+	sqlite? mysql? 
