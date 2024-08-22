@@ -1,9 +1,20 @@
-footer {
-    background-color: #333;
-    color: white;
+.footer-container {
+    background-color: var(--color-04);
+    color: var(--color-00);
     padding: 10px;
     min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .footer-container p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold; 
+    text-transform: uppercase;
+  }
+  

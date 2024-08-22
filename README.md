@@ -40,6 +40,8 @@ Funcionalidades
 	Link para README com especificação do projeto
 	Truncar tabela ao iniciar aplicação
 	Apresentar mensagem quando não houverem pensamentos cadastrados
+    Paginação
+    Favoritos
 
 Produção
 	Avaliar se subirá para produção
