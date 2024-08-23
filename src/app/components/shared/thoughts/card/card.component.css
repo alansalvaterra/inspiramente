@@ -10,7 +10,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     background-color: var(--color-00);
     font-family: 'Courier New', monospace;
-  }
+}
 
 .autor {
     font-size: 1.2rem;
@@ -26,8 +26,27 @@
 .mensagem {
     font-size: 1.5rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100%;
 }
 
 .mensagem p {
     font-weight: normal;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
+.container_icones {
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+}
+
+.icones {
+    font-size: 1.8rem;
+    color: var(--color-02);
+    cursor: pointer;
 }

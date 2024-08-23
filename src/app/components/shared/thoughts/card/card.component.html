@@ -5,9 +5,10 @@
 
     <div class="autor">
         <p>{{ pensamento.autor }}</p>
-        <div>
-            <button routerLink="/editarpensamento/{{pensamento.id}}">EDITAR</button>
-            <button routerLink="/excluirpensamento/{{pensamento.id}}">DEL</button>
+        <div class="container_icones">
+            <button routerLink="#"><i class="material-icons icones">favorite</i></button>
+            <button routerLink="/editarpensamento/{{pensamento.id}}"><i class="material-icons icones">edit</i></button>
+            <button routerLink="/excluirpensamento/{{pensamento.id}}"><i class="material-icons icones">delete</i></button>
         </div>
     </div>
 </section>
