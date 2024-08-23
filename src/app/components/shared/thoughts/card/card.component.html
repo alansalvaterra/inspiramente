@@ -1,9 +1,13 @@
-<div class="card">
-    <h2>{{ pensamento.mensagem }}</h2>
-    <br>
-    <h3>{{ pensamento.autor }}</h3>
-    <div>
-        <button routerLink="/editarpensamento/{{pensamento.id}}">EDITAR</button>
-        <button routerLink="/excluirpensamento/{{pensamento.id}}">DEL</button>
+<section class="card">
+    <div class="mensagem">
+        <p>{{ pensamento.mensagem }}</p>
     </div>
-</div>
+
+    <div class="autor">
+        <p>{{ pensamento.autor }}</p>
+        <div>
+            <button routerLink="/editarpensamento/{{pensamento.id}}">EDITAR</button>
+            <button routerLink="/excluirpensamento/{{pensamento.id}}">DEL</button>
+        </div>
+    </div>
+</section>

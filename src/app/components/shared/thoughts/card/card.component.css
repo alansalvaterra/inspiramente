@@ -1,9 +1,33 @@
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+    height: 400px;
     margin: 20px;
-    padding: 16px;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    max-width: 400px;
+    padding: 20px 10px;
+    border: 8px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-00);
+    font-family: 'Courier New', monospace;
+  }
+
+.autor {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: end;
+    margin-top: 2px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.mensagem {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.mensagem p {
+    font-weight: normal;
 }

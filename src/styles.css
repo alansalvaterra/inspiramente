@@ -3,8 +3,9 @@
     --color-00: #f0f0f0; /* Background */
     --color-01: #2EA7F2;
     --color-02: #033F73;
-    --color-03: #436073;
-    --color-04: #1A2426;
+    --color-03: #516b7c;
+    --color-04: #000000; /* Preto */
+    --color-05: #ffffff; /* Branco */
   }
 
 /* Reset CSS */
@@ -15,7 +16,8 @@
 }
 
 html, body {
-    background-color: var(--color-00);
+    background-color: var(--color-05);
+    background-image: url('../src/assets/bg-inspiration-geometry.png');
     height: 100%;
     font-size: 100%;
     line-height: 1.5;

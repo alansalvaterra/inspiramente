@@ -1,5 +1,14 @@
 <app-header></app-header>
 
+<section class="botoes_navegacao">
+    <app-button [text]="'Mural de Pensamentos'" [route]="'/home'"
+        (btnClick)="navigateTo($event)"></app-button>
+    <app-button [text]="'Adicionar Pensamento'" [route]="'/novopensamento'"
+        (btnClick)="navigateTo($event)"></app-button>
+    <app-button [text]="'Favoritos'" [route]="'#'"
+        (btnClick)="navigateTo($event)"></app-button>
+</section>
+
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>
