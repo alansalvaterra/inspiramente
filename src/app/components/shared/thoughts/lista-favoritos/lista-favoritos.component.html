@@ -1,0 +1,5 @@
+<section class="container" *ngIf="listaPensamentosFavoritos.length > 0">
+    <div *ngFor="let pensamento of listaPensamentosFavoritos">
+      <app-card [pensamento]="pensamento"></app-card>
+    </div>
+  </section>

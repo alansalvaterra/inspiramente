@@ -7,7 +7,21 @@ export class PensamentoController {
     private pensamentoRepository = AppDataSource.getRepository(Pensamento)
 
     async all(request: Request, response: Response, next: NextFunction) {
-        return this.pensamentoRepository.find()
+        try {
+            const { favoritado } = request.query;
+            let pensamentos;
+
+            if (favoritado === 'true') {
+                pensamentos = await this.pensamentoRepository.find({ where: { favoritado: true } });
+            } else {
+                pensamentos = await this.pensamentoRepository.find();
+            }
+
+            response.json(pensamentos);
+        } catch (error) {
+            console.error(error);
+            response.status(500).json({ message: 'Erro ao listar pensamentos' });
+        }
     }
 
     async one(request: Request, response: Response, next: NextFunction) {

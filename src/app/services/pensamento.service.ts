@@ -21,6 +21,10 @@ export class PensamentoService {
     return this.http.get<IPensamento[]>(this.API)
   }
 
+  listarFavoritos(): Observable<IPensamento[]> {
+    return this.http.get<IPensamento[]>(`${this.API}?favoritado=true`);
+  }
+
   listarPorId(id: number): Observable<IPensamento> {
     return this.http.get<IPensamento>(`${this.API}/${id}`);
   }
