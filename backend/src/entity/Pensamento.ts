@@ -15,4 +15,7 @@ export class Pensamento {
     @Column()
     modelo: number
 
+    @Column()
+    favoritado: boolean
+
 }

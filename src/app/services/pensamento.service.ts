@@ -32,4 +32,9 @@ export class PensamentoService {
   deletaPensamento(id: number): Observable<string> {
     return this.http.delete(`${this.API}/${id}`, { responseType: 'text' });
   }
+
+  favoritar(id: number, favoritado: boolean): Observable<any> {
+    return this.http.put(`${this.API}/${id}`, { favoritado }, { responseType: 'text' });
+  }
+  
 }

@@ -51,13 +51,13 @@ export class PensamentoController {
     async update(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id)
 
-        let penamentoAtualizado = await this.pensamentoRepository.findOneBy({ id })
+        let pensamentoAtualizado = await this.pensamentoRepository.findOneBy({ id })
 
-        if (!penamentoAtualizado) {
+        if (!pensamentoAtualizado) {
             return "Pensamento não encontrado"
         }
 
-        await this.pensamentoRepository.update(penamentoAtualizado, request.body)
+        await this.pensamentoRepository.update(pensamentoAtualizado, request.body)
 
         return "Pensamento atualizado"
     }

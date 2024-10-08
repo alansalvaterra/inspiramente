@@ -3,4 +3,5 @@ export interface IPensamento {
     mensagem: string
     autor: string
     modelo: number
+    favoritado?: boolean
   }
