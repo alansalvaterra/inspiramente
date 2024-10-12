@@ -15,7 +15,7 @@ export class Pensamento {
     @Column()
     modelo: number
 
-    @Column()
+    @Column({ default: false })
     favoritado: boolean
 
 }
