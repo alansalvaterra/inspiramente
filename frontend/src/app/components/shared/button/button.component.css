@@ -10,7 +10,12 @@ button {
     width: 250px;
   }
   
-  button:hover {
-    background-color: var(--color-01);
+  button:hover:not([disabled]) {
+    background-color: var(--color-01); 
   }
   
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-03); 
+}

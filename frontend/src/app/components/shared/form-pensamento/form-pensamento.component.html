@@ -1,37 +1,90 @@
-<form>
-    <section>
-        <label for="pensamento">Pensamento:</label>
-        <input type="textarea" id="pensamento" placeholder="Digite o pensamento" name="pensamento"
-            [(ngModel)]="pensamento.mensagem" />
-        <label for="autor">Autor:</label>
-        <input type="textarea" id="autor" placeholder="Digite a autoria ou fonte" name="autor"
-            [(ngModel)]="pensamento.autor" />
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <section>
+    <label for="pensamento">Pensamento:</label>
+    <input
+      type="textarea" 
+      id="pensamento"
+      placeholder="Digite o pensamento"
+      formControlName="mensagem"
+      maxlength="200" 
+    />
+    <div *ngIf="formulario.get('mensagem')?.invalid && formulario.get('mensagem')?.touched" class="erro">
+      <p *ngIf="formulario.get('mensagem')?.errors?.['required']">Pensamento é obrigatório.</p>
+      <p *ngIf="formulario.get('mensagem')?.errors?.['minlength']">
+        O pensamento deve ter no mínimo 10 caracteres.
+      </p>
+      <p *ngIf="formulario.get('mensagem')?.errors?.['maxlength']">
+        O pensamento deve ter no máximo 200 caracteres.
+      </p>
+    </div>
+    <p class="alertaTamanhoMensagem">Máx. Caracteres: {{ 200 - (formulario.get('mensagem')?.value?.length || 0) }}</p>
 
-        <p>Selecione o modelo do seu card:</p>
-        <ul>
-            <li>
-                <label for="modelo1">
-                    <input type="radio" id="modelo1" name="modelo" value="0" [(ngModel)]="pensamento.modelo" />
-                    Modelo 1
-                </label>
-            </li>
-            <li>
-                <label for="modelo2">
-                    <input type="radio" id="modelo2" name="modelo" value="1" [(ngModel)]="pensamento.modelo" />
-                    Modelo 2
-                </label>
-            </li>
-        </ul>
-    </section>
+    <label for="autor">Autor:</label>
+    <input
+      type="textarea" 
+      id="autor" 
+      placeholder="Digite a autoria ou fonte" 
+      formControlName="autor"
+      maxlength="20" 
+    />
+    <div *ngIf="formulario.get('autor')?.invalid && formulario.get('autor')?.touched" class="erro">
+      <p *ngIf="formulario.get('autor')?.errors?.['required']">Autor é obrigatório.</p>
+      <p *ngIf="formulario.get('autor')?.errors?.['minlength']">
+        O nome do autor deve ter no mínimo 2 caracteres.
+      </p>
+      <p *ngIf="formulario.get('autor')?.errors?.['maxlength']">
+        O nome do autor deve ter no máximo 20 caracteres.
+      </p>
+    </div>
+    <p class="alertaTamanhoMensagem">Máx. Caracteres: {{ 20 - (formulario.get('autor')?.value?.length || 0) }}</p>
 
-    <section>
-        <h3>Prévia</h3>
-        <app-card [pensamento]="pensamento"></app-card>
-    </section>
+    <h4>Estilo:</h4>
+    <ul>
+      <li>
+        <label for="modelo1">
+          <input 
+            type="radio"
+            id="modelo1"
+            formControlName="modelo"
+            value="1"
+          />
+          Modelo 1
+        </label>
+      </li>
+      <li>
+        <label for="modelo2">
+          <input
+            type="radio"
+            id="modelo2"
+            formControlName="modelo"
+            value="2"
+          />
+          Modelo 2
+        </label>
+      </li>
+    </ul>
+    <div *ngIf="formulario.get('modelo')?.invalid && formulario.get('modelo')?.touched" class="erro">
+      <p>É necessário selecionar um modelo.</p>
+    </div>
+  </section>
 
-    <section class="botoes_navegacao">
-        <app-button [text]="'Salvar'" (btnClick)="salvaPensamento(pensamento)"></app-button>
-        <app-button [text]="'Cancelaar'" [route]="'/home'" (btnClick)="navigateTo($event)">
-        </app-button>
-    </section>
+  <section>
+    <h3>Prévia</h3>
+    <app-card [pensamento]="formulario.value"></app-card>
+  </section>
+
+  <section class="botoes_navegacao">
+    <app-button
+      [text]="'Salvar'"
+      [route]="''" 
+      [disabled]="formulario.invalid"
+      (btnClick)="onSubmit()">
+    </app-button>
+
+    <app-button
+      [text]="'Cancelar'"
+      [route]="'/home'"
+      (btnClick)="navigateTo('/home')">
+    </app-button>
+  </section>
 </form>
