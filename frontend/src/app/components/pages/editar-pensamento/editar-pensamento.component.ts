@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PensamentoService } from '../../../services/pensamento.service';
-import { NavigationService } from '../../../services/navigation.service';
 import { IPensamento } from '../../../interfaces/IPensamento';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormPensamentoComponent } from '../../shared/form-pensamento/form-pensamento.component';
@@ -25,7 +24,6 @@ export class EditarPensamentoComponent {
   };
 
   constructor(
-    private navigationService: NavigationService,
     private service: PensamentoService,
     private router: Router,
     private route: ActivatedRoute
@@ -47,7 +45,7 @@ export class EditarPensamentoComponent {
     });
   }  
 
-  navigateTo(route: string): void {
-    this.navigationService.navigateTo(route);
+  cancelar(): void {
+    this.router.navigate(['/home']);
   }
 }

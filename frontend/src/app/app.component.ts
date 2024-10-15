@@ -4,7 +4,6 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HomeComponent } from './components/pages/home/home.component';
 import { ButtonComponent } from './components/shared/button/button.component';
-import { NavigationService } from './services/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +21,11 @@ import { NavigationService } from './services/navigation.service';
 export class AppComponent {
   title = 'praticando-angular';
 
-  constructor(private navigationService: NavigationService) {}
+  constructor(
+    private router: Router
+  ) {}
 
   navigateTo(route: string): void {
-    this.navigationService.navigateTo(route);
+    this.router.navigate([route]);
   }
 }

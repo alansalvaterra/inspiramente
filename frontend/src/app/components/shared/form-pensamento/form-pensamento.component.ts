@@ -3,7 +3,6 @@ import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } 
 import { IPensamento } from '../../../interfaces/IPensamento';
 import { CardComponent } from "../thoughts/card/card.component";
 import { PensamentoService } from '../../../services/pensamento.service';
-import { NavigationService } from '../../../services/navigation.service';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { CommonModule } from '@angular/common';
@@ -29,7 +28,6 @@ export class FormPensamentoComponent {
   formulario!: FormGroup;
 
   constructor(
-    private navigationService: NavigationService,
     private service: PensamentoService,
     private router: Router,
     private fb: FormBuilder
@@ -54,6 +52,6 @@ export class FormPensamentoComponent {
   }
 
   navigateTo(route: string): void {
-    this.navigationService.navigateTo(route);
+    this.router.navigate([route]);
   }
 }

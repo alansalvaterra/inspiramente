@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
-import { NavigationService } from '../../../services/navigation.service';
 import { PensamentoService } from '../../../services/pensamento.service';
 import { IPensamento } from '../../../interfaces/IPensamento';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +23,6 @@ export class ExcluirPensamentoComponent {
   };
 
   constructor(
-    private navigationService: NavigationService,
     private service: PensamentoService,
     private router: Router,
     private route: ActivatedRoute
@@ -38,7 +36,7 @@ export class ExcluirPensamentoComponent {
   }
 
   navigateTo(route: string): void {
-    this.navigationService.navigateTo(route);
+    this.router.navigate([route]);
   }
 
   excluirPensamento() {

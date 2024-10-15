@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavigationService } from '../../../services/navigation.service';
 import { PensamentoService } from '../../../services/pensamento.service';
 import type { IPensamento } from '../../../interfaces/IPensamento';
 import { Router } from '@angular/router';
@@ -22,7 +21,6 @@ export class NovoPensamentoComponent {
 
   constructor(
     private service: PensamentoService,
-    private navigationService: NavigationService,
     private router: Router
   ) { }
 
@@ -34,6 +32,6 @@ export class NovoPensamentoComponent {
   }
 
   cancelar(): void {
-    this.navigationService.navigateTo('/home');
+    this.router.navigate(['/home']);
   }
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from "../../shared/button/button.component";
-import { NavigationService } from '../../../services/navigation.service';
 import { CardComponent } from '../../shared/thoughts/card/card.component';
 import { ListaCardComponent } from '../../shared/thoughts/listacard/listacard.component';
 
@@ -13,9 +12,6 @@ import { ListaCardComponent } from '../../shared/thoughts/listacard/listacard.co
 })
 
 export class HomeComponent {
-  constructor(private navigationService: NavigationService) {}
+  constructor( ) {}
 
-  navigateTo(route: string): void {
-    this.navigationService.navigateTo(route);
-  }
 }
