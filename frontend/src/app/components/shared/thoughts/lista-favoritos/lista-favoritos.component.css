@@ -1,14 +1,18 @@
-.container {
+.cards-container {
     display: flex;
-    justify-content: center;
+    justify-content:center; 
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 30px; 
+    padding: 0;
+    margin: auto;
+    width: 100%;
+    max-width: 100%; 
 }
 
-.container app-card {
+/* .container app-card {
     flex-basis: calc(100% - 2rem);
     max-width: 100%;
-}
+} */
 
 @media (min-width: 600px) {
     .container app-card {

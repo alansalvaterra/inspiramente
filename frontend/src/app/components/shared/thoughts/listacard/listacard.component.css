@@ -1,36 +1,10 @@
-/* Contêiner dos cards */
 .cards-container {
     display: flex;
-    justify-content: space-evenly; /* Distribui os cards uniformemente */
+    justify-content:center; 
     flex-wrap: wrap;
-    gap: 40px; /* Aumenta o espaçamento entre os cards */
+    gap: 30px; 
     padding: 0;
-    margin: 0 auto;
+    margin: auto;
     width: 100%;
-    max-width: 1300px; /* Limita o contêiner a uma largura maior */
-}
-
-/* Aumentar a largura dos cards */
-.cards-container app-card {
-    flex: 1 1 calc(25% - 40px); /* Cada card ocupa 25% da largura, com espaçamento */
-    min-width: 280px; /* Aumenta a largura mínima dos cards */
-    max-width: 340px; /* Aumenta a largura máxima dos cards */
-}
-
-@media (max-width: 900px) {
-    .cards-container app-card {
-        flex: 1 1 calc(33.33% - 40px); /* Três cards por linha */
-    }
-}
-
-@media (max-width: 600px) {
-    .cards-container app-card {
-        flex: 1 1 calc(50% - 40px); /* Dois cards por linha */
-    }
-}
-
-@media (max-width: 400px) {
-    .cards-container app-card {
-        flex: 1 1 calc(100% - 40px); /* Um card por linha */
-    }
+    max-width: 100%; 
 }

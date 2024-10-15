@@ -2,12 +2,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%; /* O card ocupa toda a largura disponível */
+    width: 375px;
     padding: 20px 10px;
     border: 8px solid white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     background-color: var(--color-00);
     font-family: 'Courier New', monospace;
+}
+
+.mensagem {
+    font-size: 1.2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-weight: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .autor {
@@ -21,26 +34,10 @@
     flex-direction: column;
 }
 
-.mensagem {
-    font-size: 1.2rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    height: 100%;
-}
-
-.mensagem p {
-    font-weight: normal;
-    hyphens: auto;
-    overflow-wrap: break-word;
-    width: 100%;
-    word-break: break-word;
-}
 
 .container_icones {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     gap: 10px;
 }
 
@@ -50,18 +47,32 @@
     cursor: pointer;
 }
 
-@media (min-width: 769px) {
-    .card {
-        height: 450px; /* Define altura consistente para todos os cards */
-        margin: 20px;
-    }
-}
-
-
 @media (max-width: 768px) {
     .card {
         max-width: 100%;
+        width: 305px;
         margin: 10px 0;
         padding: 15px 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .card {
+        height: 450px;
+        margin: 20px;
+    }
+
+    .mensagem {
+        font-size: 1.5rem;
+    }
+
+    .autor {
+        font-size: 1.2rem;
+    }
+
+    .icones {
+        font-size: 2rem;
+        color: var(--color-02);
+        cursor: pointer;
     }
 }

@@ -43,8 +43,15 @@ form {
   ul li input[type="radio"] {
     margin-right: 10px;
   }
+
+  .previa {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
   
-  section h3 {
+  .previa h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--color-02);

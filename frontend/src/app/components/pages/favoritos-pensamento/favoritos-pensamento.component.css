@@ -1,7 +1,7 @@
-.container {
+/* .container {
     margin: 2rem auto;
     max-width: 80%;
-}
+} */
 
 .titulo {
     font-size: 2rem;
@@ -11,10 +11,10 @@
 }
 
 @media (max-width: 768px) {
-    .container {
+    /* .container {
         margin: 1rem auto;
         max-width: 100%;
-    }
+    } */
 
     .titulo {
         font-size: 2rem;
@@ -22,12 +22,12 @@
 }
 
 @media (min-width: 769px) {
-    .container {
+    /* .container {
         margin: 2rem auto;
         max-width: 80%;
-    }
+    } */
 
     .titulo {
         font-size: 2.5rem;
     }
-}
+} 
