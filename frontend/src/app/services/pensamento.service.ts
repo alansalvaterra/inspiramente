@@ -28,8 +28,8 @@ export class PensamentoService {
   listarPorId(id: number): Observable<IPensamento> {
     return this.http.get<IPensamento>(`${this.API}/${id}`);
   }
-  
-  editaPensamento(pensamento: IPensamento): Observable<IPensamento> {
+
+  editaPensamento(pensamento: IPensamento) {
     return this.http.put<IPensamento>(`${this.API}/${pensamento.id}`, pensamento);
   }
 

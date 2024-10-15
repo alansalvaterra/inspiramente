@@ -38,7 +38,9 @@ export class PensamentoController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
+
         const { mensagem, autor, modelo } = request.body;
+
         const pensamento = Object.assign(new Pensamento(), {
             mensagem,
             autor,

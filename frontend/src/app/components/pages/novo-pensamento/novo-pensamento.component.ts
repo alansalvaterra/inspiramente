@@ -12,6 +12,7 @@ import { FormPensamentoComponent } from '../../shared/form-pensamento/form-pensa
   templateUrl: './novo-pensamento.component.html',
   styleUrl: './novo-pensamento.component.css',
 })
+
 export class NovoPensamentoComponent {
   novopensamento: IPensamento = {
     mensagem: '',
@@ -20,10 +21,10 @@ export class NovoPensamentoComponent {
   };
 
   constructor(
-    private navigationService: NavigationService,
     private service: PensamentoService,
+    private navigationService: NavigationService,
     private router: Router
-  ) {}
+  ) { }
 
   salvaPensamento(pensamento: IPensamento): void {
     this.service.salvaPensamento(pensamento).subscribe(() => {
@@ -32,7 +33,7 @@ export class NovoPensamentoComponent {
     });
   }
 
-  navigateTo(route: string): void {
-    this.navigationService.navigateTo(route);
+  cancelar(): void {
+    this.navigationService.navigateTo('/home');
   }
 }

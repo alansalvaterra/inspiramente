@@ -39,14 +39,13 @@ export class EditarPensamentoComponent {
       });
     }
   }
-  
 
   editaPensamento(pensamento: IPensamento): void {
     this.service.editaPensamento(pensamento).subscribe(() => {
       alert('Pensamento editado com sucesso!');
       this.router.navigate(['/home']);
     });
-  }
+  }  
 
   navigateTo(route: string): void {
     this.navigationService.navigateTo(route);

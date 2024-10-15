@@ -25,7 +25,6 @@ import { CommonModule } from '@angular/common';
 export class FormPensamentoComponent {
   @Input() pensamento: IPensamento = { mensagem: '', autor: '', modelo: 0 };
   @Output() onSave = new EventEmitter<IPensamento>();
-  // @Output() onCancel = new EventEmitter<void>();
 
   formulario!: FormGroup;
 
@@ -38,6 +37,7 @@ export class FormPensamentoComponent {
 
   ngOnInit(): void {
     this.formulario = this.fb.group({
+      id: [this.pensamento.id],
       mensagem: [this.pensamento.mensagem, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       autor: [this.pensamento.autor, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       modelo: [this.pensamento.modelo, [Validators.required]],
@@ -47,17 +47,10 @@ export class FormPensamentoComponent {
   onSubmit(): void {
     if (this.formulario.valid) {
       const pensamento: IPensamento = this.formulario.value; 
-      this.salvaPensamento(pensamento); 
+      this.onSave.emit(pensamento);
     } else {
       this.formulario.markAllAsTouched();
     }
-  }
-
-  salvaPensamento(pensamento: IPensamento): void {
-    this.service.salvaPensamento(pensamento).subscribe(() => {
-      alert('Pensamento salvo com sucesso!');
-      this.router.navigate(['/home']);
-    });
   }
 
   navigateTo(route: string): void {

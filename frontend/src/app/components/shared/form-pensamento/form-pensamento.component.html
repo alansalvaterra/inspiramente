@@ -1,13 +1,8 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
   <section>
     <label for="pensamento">Pensamento:</label>
-    <input
-      type="textarea" 
-      id="pensamento"
-      placeholder="Digite o pensamento"
-      formControlName="mensagem"
-      maxlength="200" 
-    />
+    <input type="textarea" id="pensamento" placeholder="Digite o pensamento" formControlName="mensagem"
+      maxlength="200" />
     <div *ngIf="formulario.get('mensagem')?.invalid && formulario.get('mensagem')?.touched" class="erro">
       <p *ngIf="formulario.get('mensagem')?.errors?.['required']">Pensamento é obrigatório.</p>
       <p *ngIf="formulario.get('mensagem')?.errors?.['minlength']">
@@ -17,16 +12,10 @@
         O pensamento deve ter no máximo 200 caracteres.
       </p>
     </div>
-    <p class="alertaTamanhoMensagem">Máx. Caracteres: {{ 200 - (formulario.get('mensagem')?.value?.length || 0) }}</p>
+    <p class="alertaTamanhoMensagem">Caracteres restantes: {{ 200 - (formulario.get('mensagem')?.value?.length || 0) }}</p>
 
     <label for="autor">Autor:</label>
-    <input
-      type="textarea" 
-      id="autor" 
-      placeholder="Digite a autoria ou fonte" 
-      formControlName="autor"
-      maxlength="20" 
-    />
+    <input type="textarea" id="autor" placeholder="Digite a autoria ou fonte" formControlName="autor" maxlength="20" />
     <div *ngIf="formulario.get('autor')?.invalid && formulario.get('autor')?.touched" class="erro">
       <p *ngIf="formulario.get('autor')?.errors?.['required']">Autor é obrigatório.</p>
       <p *ngIf="formulario.get('autor')?.errors?.['minlength']">
@@ -36,29 +25,19 @@
         O nome do autor deve ter no máximo 20 caracteres.
       </p>
     </div>
-    <p class="alertaTamanhoMensagem">Máx. Caracteres: {{ 20 - (formulario.get('autor')?.value?.length || 0) }}</p>
+    <p class="alertaTamanhoMensagem">Caracteres restantes: {{ 20 - (formulario.get('autor')?.value?.length || 0) }}</p>
 
     <h4>Estilo:</h4>
     <ul>
       <li>
         <label for="modelo1">
-          <input 
-            type="radio"
-            id="modelo1"
-            formControlName="modelo"
-            value="1"
-          />
+          <input type="radio" id="modelo1" formControlName="modelo" value="1" />
           Modelo 1
         </label>
       </li>
       <li>
         <label for="modelo2">
-          <input
-            type="radio"
-            id="modelo2"
-            formControlName="modelo"
-            value="2"
-          />
+          <input type="radio" id="modelo2" formControlName="modelo" value="2" />
           Modelo 2
         </label>
       </li>
@@ -74,17 +53,10 @@
   </section>
 
   <section class="botoes_navegacao">
-    <app-button
-      [text]="'Salvar'"
-      [route]="''" 
-      [disabled]="formulario.invalid"
-      (btnClick)="onSubmit()">
+    <app-button [text]="'Salvar'" [route]="''" [disabled]="formulario.invalid">
     </app-button>
 
-    <app-button
-      [text]="'Cancelar'"
-      [route]="'/home'"
-      (btnClick)="navigateTo('/home')">
+    <app-button [text]="'Cancelar'" [route]="'/home'" (btnClick)="navigateTo('/home')">
     </app-button>
   </section>
 </form>
