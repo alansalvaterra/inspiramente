@@ -3,7 +3,10 @@
         <h2>Exclusão de Pensamento</h2>
     </div>
 
-    <h2>O pensamento será apagado. <br> Confirma a exclusão?</h2>
+    <h2>O pensamento abaixo será apagado. <br> Confirma a exclusão?</h2>
+
+    <app-card [pensamento]="pensamento" [isNew]="true"></app-card>
+
     <div class="botoes_navegacao">
         <app-button [text]="'Excluir Pensamento'" (btnClick)="excluirPensamento()">
         </app-button>

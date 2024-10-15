@@ -3,13 +3,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IPensamento } from '../../../interfaces/IPensamento';
 import { PensamentoService } from '../../../services/pensamento.service';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { CardComponent } from '../../shared/thoughts/card/card.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-excluir-pensamento',
   standalone: true,
   imports: [
-    ButtonComponent
+    ButtonComponent,
+    CardComponent,
   ],
   templateUrl: './excluir-pensamento.component.html',
   styleUrl: './excluir-pensamento.component.css'
