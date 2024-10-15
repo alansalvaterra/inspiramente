@@ -1,5 +1,3 @@
-<section class="container" *ngIf="listaPensamentos.length > 0">
-  <div *ngFor="let pensamento of listaPensamentos">
-    <app-card [pensamento]="pensamento"></app-card>
-  </div>
+<section class="cards-container" *ngIf="listaPensamentos.length > 0">
+  <app-card *ngFor="let pensamento of listaPensamentos" [pensamento]="pensamento"></app-card>
 </section>

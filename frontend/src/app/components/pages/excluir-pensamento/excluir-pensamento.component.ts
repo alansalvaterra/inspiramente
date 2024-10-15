@@ -48,7 +48,9 @@ export class ExcluirPensamentoComponent {
       this.service.deletaPensamento(this.pensamento.id).subscribe(() => {
         this.router.navigate(['/home'])
         this.snackBar.open('Pensamento excluído com sucesso!', 'Fechar', {
-          duration: 3000
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
         })
       })
     }

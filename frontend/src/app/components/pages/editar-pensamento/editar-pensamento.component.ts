@@ -44,10 +44,12 @@ export class EditarPensamentoComponent {
     this.service.editaPensamento(pensamento).subscribe(() => {
       this.router.navigate(['/home']);
       this.snackBar.open('Pensamento editado com sucesso!', 'Fechar', {
-        duration: 3000
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
       });
     });
-  }  
+  }
 
   cancelar(): void {
     this.router.navigate(['/home']);

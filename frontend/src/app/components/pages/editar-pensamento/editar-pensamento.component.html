@@ -1,13 +1,8 @@
-<div class="titulo">
-  <h2>Edição de Pensamento</h2>
-</div>
+<h2 class="titulo">Edição de Pensamento</h2>
 
 <ng-container *ngIf="pensamento?.id">
-  <app-form-pensamento
-    [pensamento]="pensamento"
-    (onSave)="editaPensamento($event)"
-    (onCancel)="cancelar()"
-  ></app-form-pensamento>
+  <app-form-pensamento [pensamento]="pensamento" (onSave)="editaPensamento($event)"
+    (onCancel)="cancelar()"></app-form-pensamento>
 </ng-container>
 
 <p *ngIf="!pensamento?.id">Carregando...</p>

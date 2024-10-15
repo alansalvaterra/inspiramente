@@ -2,9 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 350px;
-    height: 400px;
-    margin: 20px;
+    width: 100%; /* O card ocupa toda a largura disponível */
     padding: 20px 10px;
     border: 8px solid white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -13,7 +11,7 @@
 }
 
 .autor {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
     text-align: end;
@@ -24,7 +22,7 @@
 }
 
 .mensagem {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -37,16 +35,33 @@
     hyphens: auto;
     overflow-wrap: break-word;
     width: 100%;
+    word-break: break-word;
 }
 
 .container_icones {
     display: flex;
-    justify-content: end;
-    gap: 5px;
+    justify-content: flex-end; 
+    gap: 10px;
 }
 
 .icones {
     font-size: 1.8rem;
     color: var(--color-02);
     cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .card {
+        height: 450px; /* Define altura consistente para todos os cards */
+        margin: 20px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+        margin: 10px 0;
+        padding: 15px 10px;
+    }
 }

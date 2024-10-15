@@ -31,6 +31,8 @@ export class NovoPensamentoComponent {
       this.router.navigate(['/home']);
       this.snackBar.open('Pensamento salvo com sucesso!', 'Fechar', {
         duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
       });
     });
   }

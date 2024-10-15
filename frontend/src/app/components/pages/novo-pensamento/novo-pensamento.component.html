@@ -1,10 +1,4 @@
-<div class="titulo">
-    <h2>Novo Pensamento</h2>
-</div>
+<h2 class="titulo">Novo Pensamento</h2>
 
-<app-form-pensamento
-  [pensamento]="novopensamento"
-  (onSave)="salvaPensamento($event)"
-  (onCancel)="cancelar()"
-></app-form-pensamento>
-
+<app-form-pensamento [pensamento]="novopensamento" (onSave)="salvaPensamento($event)"
+  (onCancel)="cancelar()"></app-form-pensamento>

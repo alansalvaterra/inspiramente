@@ -1,6 +1,29 @@
-.botoes_navegacao {
+.wrapper {
     display: flex;
-    justify-content: center;
-    margin: 40px 0;
+    flex-direction: column;
+    min-height: calc(100vh - 80px);
+}
+
+.botoes_navegacao {
     gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .botoes_navegacao {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .botoes_navegacao {
+        flex-direction: row;
+        gap: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }

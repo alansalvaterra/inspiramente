@@ -1,14 +1,16 @@
-<app-header></app-header>
+<div class="wrapper">
+    <app-header></app-header>
 
-<section class="botoes_navegacao">
-    <app-button [text]="'Mural de Pensamentos'" [route]="'/home'"
-        (btnClick)="navigateTo($event)"></app-button>
-    <app-button [text]="'Adicionar Pensamento'" [route]="'/novopensamento'"
-        (btnClick)="navigateTo($event)"></app-button>
-    <app-button [text]="'Favoritos'" [route]="'/favoritos'"
-        (btnClick)="navigateTo($event)"></app-button>
-</section>
+    <section
+        class="botoes_navegacao d-flex flex-column flex-md-row justify-content-center mb-4 gap-3 align-items-center">
+        <app-button [text]="'Mural de Pensamentos'" [route]="'/home'" (btnClick)="navigateTo($event)"></app-button>
+        <app-button [text]="'Adicionar Pensamento'" [route]="'/novopensamento'"
+            (btnClick)="navigateTo($event)"></app-button>
+        <app-button [text]="'Favoritos'" [route]="'/favoritos'" (btnClick)="navigateTo($event)"></app-button>
+    </section>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</div>
+
 
 <app-footer></app-footer>
