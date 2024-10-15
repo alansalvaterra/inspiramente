@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../shared/button/button.component';
-import { PensamentoService } from '../../../services/pensamento.service';
-import { IPensamento } from '../../../interfaces/IPensamento';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IPensamento } from '../../../interfaces/IPensamento';
+import { PensamentoService } from '../../../services/pensamento.service';
+import { ButtonComponent } from '../../shared/button/button.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-excluir-pensamento',
@@ -15,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ExcluirPensamentoComponent {
 
-  pensamento: IPensamento = {	
+  pensamento: IPensamento = {
     id: 0,
     mensagem: '',
     autor: '',
@@ -25,8 +26,9 @@ export class ExcluirPensamentoComponent {
   constructor(
     private service: PensamentoService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
@@ -40,10 +42,12 @@ export class ExcluirPensamentoComponent {
   }
 
   excluirPensamento() {
-    if(this.pensamento.id) {
+    if (this.pensamento.id) {
       this.service.deletaPensamento(this.pensamento.id).subscribe(() => {
-        alert('Pensamento excluído com sucesso!');
         this.router.navigate(['/home'])
+        this.snackBar.open('Pensamento excluído com sucesso!', 'Fechar', {
+          duration: 3000
+        })
       })
     }
   }

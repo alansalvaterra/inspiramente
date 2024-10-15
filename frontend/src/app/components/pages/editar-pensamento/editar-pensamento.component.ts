@@ -4,6 +4,7 @@ import { IPensamento } from '../../../interfaces/IPensamento';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormPensamentoComponent } from '../../shared/form-pensamento/form-pensamento.component';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-pensamento',
@@ -26,7 +27,8 @@ export class EditarPensamentoComponent {
   constructor(
     private service: PensamentoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -40,8 +42,10 @@ export class EditarPensamentoComponent {
 
   editaPensamento(pensamento: IPensamento): void {
     this.service.editaPensamento(pensamento).subscribe(() => {
-      alert('Pensamento editado com sucesso!');
       this.router.navigate(['/home']);
+      this.snackBar.open('Pensamento editado com sucesso!', 'Fechar', {
+        duration: 3000
+      });
     });
   }  
 

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { PensamentoService } from '../../../services/pensamento.service';
-import type { IPensamento } from '../../../interfaces/IPensamento';
 import { Router } from '@angular/router';
+import { IPensamento } from '../../../interfaces/IPensamento';
+import { PensamentoService } from '../../../services/pensamento.service';
 import { FormPensamentoComponent } from '../../shared/form-pensamento/form-pensamento.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-novo-pensamento',
@@ -21,13 +22,16 @@ export class NovoPensamentoComponent {
 
   constructor(
     private service: PensamentoService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
   ) { }
 
   salvaPensamento(pensamento: IPensamento): void {
     this.service.salvaPensamento(pensamento).subscribe(() => {
-      alert('Pensamento salvo com sucesso!');
       this.router.navigate(['/home']);
+      this.snackBar.open('Pensamento salvo com sucesso!', 'Fechar', {
+        duration: 3000,
+      });
     });
   }
 
