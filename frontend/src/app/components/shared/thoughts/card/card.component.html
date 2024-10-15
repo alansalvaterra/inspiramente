@@ -7,15 +7,15 @@
         <p>{{ pensamento.autor }}</p>
         <div class="container_icones">
 
-            <button (click)="alteraFavorito()">
+            <button [disabled]="isNew" (click)="alteraFavorito()">
                 <i class="material-icons icones">{{ pensamento.favoritado ? 'favorite' : 'favorite_border' }}</i>
             </button>
 
-            <button routerLink="/editarpensamento/{{pensamento.id}}">
+            <button [disabled]="isNew" routerLink="/editarpensamento/{{pensamento.id}}">
                 <i class="material-icons icones">edit</i>
             </button>
 
-            <button routerLink="/excluirpensamento/{{pensamento.id}}">
+            <button [disabled]="isNew" routerLink="/excluirpensamento/{{pensamento.id}}">
                 <i class="material-icons icones">delete</i>
             </button>
 

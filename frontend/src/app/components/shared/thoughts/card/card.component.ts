@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CardComponent {
   @Input() pensamento!: IPensamento;
+  @Input() isNew: boolean = false;
 
   constructor(
     private service: PensamentoService
