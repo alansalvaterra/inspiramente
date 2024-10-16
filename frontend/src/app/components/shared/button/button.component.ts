@@ -10,11 +10,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent {
   @Input() text: string = 'Botão Padrão';
   @Input() route: string = '/';
-  @Input() disabled: boolean = false; 
+  @Input() disabled: boolean = false;
   @Output() btnClick = new EventEmitter<string>();
 
   onClick(): void {
-    if (!this.disabled) { 
+    if (!this.disabled) {
       this.btnClick.emit(this.route);
     }
   }

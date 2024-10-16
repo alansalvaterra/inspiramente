@@ -17,8 +17,6 @@ export class ListaFavoritosComponent {
   constructor(private service: PensamentoService) { }
 
   ngOnInit(): void {
-    this.service.listarFavoritos().subscribe((listaPensamentosFavoritos) => {
-      this.listaPensamentosFavoritos = listaPensamentosFavoritos
-    })
+    this.listaPensamentosFavoritos = this.service.listarFavoritos();
   }
 }

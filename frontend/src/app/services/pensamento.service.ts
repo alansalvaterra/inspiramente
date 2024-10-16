@@ -1,44 +1,84 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { IPensamento } from '../interfaces/IPensamento';
-import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PensamentoService {
 
-  private API = 'http://localhost:3000/pensamentos'; 
+  private STORAGE_KEY = 'pensamentos';
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  salvaPensamento(pensamento: IPensamento): Observable<IPensamento> {
-    return this.http.post<IPensamento>(this.API, pensamento);
+  salvarPensamento(pensamento: IPensamento): void {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    let pensamentos: IPensamento[] = pensamentosSalvos ? JSON.parse(pensamentosSalvos) : [];
+    const novoId = pensamentos.length > 0 ? Math.max(...pensamentos.map(p => p.id || 0)) + 1 : 1; // Calcula o novo ID baseado no maior ID existente
+    
+    pensamento.id = novoId;
+    pensamentos.push(pensamento);
+    sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
   }
 
-  listar(): Observable<IPensamento[]> {
-    return this.http.get<IPensamento[]>(this.API)
+  listar(): IPensamento[] {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    return pensamentosSalvos ? JSON.parse(pensamentosSalvos) : [];
   }
 
-  listarFavoritos(): Observable<IPensamento[]> {
-    return this.http.get<IPensamento[]>(`${this.API}?favoritado=true`);
+  listarPorId(id: number): IPensamento | undefined {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+
+    if (pensamentosSalvos) {
+      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+      return pensamentos.find(p => p.id === id);
+    }
+    return undefined;
   }
 
-  listarPorId(id: number): Observable<IPensamento> {
-    return this.http.get<IPensamento>(`${this.API}/${id}`);
+  deletarPensamento(id: number): void {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+
+    if (pensamentosSalvos) {
+      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+      pensamentos = pensamentos.filter(p => p.id !== id);
+      sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+    }
   }
 
-  editaPensamento(pensamento: IPensamento) {
-    return this.http.put<IPensamento>(`${this.API}/${pensamento.id}`, pensamento);
+  editarPensamento(pensamentoEditado: IPensamento): void {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+
+    if (pensamentosSalvos) {
+      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+      const index = pensamentos.findIndex(p => p.id === pensamentoEditado.id);
+      if (index !== -1) {
+        pensamentos[index] = pensamentoEditado;
+        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+      }
+    }
   }
 
-  deletaPensamento(id: number): Observable<string> {
-    return this.http.delete(`${this.API}/${id}`, { responseType: 'text' });
+  favoritar(id: number, favoritado: boolean): void {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+
+    if (pensamentosSalvos) {
+      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+      const index = pensamentos.findIndex(p => p.id === id);
+      if (index !== -1) {
+        pensamentos[index].favoritado = favoritado;
+        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+      }
+    }
   }
 
-  favoritar(id: number, favoritado: boolean): Observable<any> {
-    return this.http.put(`${this.API}/${id}`, { favoritado }, { responseType: 'text' });
+  listarFavoritos(): IPensamento[] {
+    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+
+    if (pensamentosSalvos) {
+      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+      return pensamentos.filter(p => p.favoritado === true);
+    }
+    return [];
   }
-  
 }

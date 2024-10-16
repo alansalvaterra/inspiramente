@@ -20,21 +20,32 @@ export class NovoPensamentoComponent {
     modelo: 0,
   };
 
+  pensamentos: IPensamento[] = [];
+
   constructor(
     private service: PensamentoService,
     private router: Router,
     private snackBar: MatSnackBar,
   ) { }
 
-  salvaPensamento(pensamento: IPensamento): void {
-    this.service.salvaPensamento(pensamento).subscribe(() => {
-      this.router.navigate(['/home']);
-      this.snackBar.open('Pensamento salvo com sucesso!', 'Fechar', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-      });
+  ngOnInit(): void {
+    const pensamentosSalvos = sessionStorage.getItem('pensamentos');
+
+    if (pensamentosSalvos) {
+      this.pensamentos = JSON.parse(pensamentosSalvos);
+    }
+  }
+
+  salvarPensamento(pensamento: IPensamento): void {
+    this.service.salvarPensamento(pensamento);
+
+    this.snackBar.open('Pensamento salvo com sucesso!', 'Fechar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
+
+    this.router.navigate(['/home']);
   }
 
   cancelar(): void {

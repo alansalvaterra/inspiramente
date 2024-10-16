@@ -11,11 +11,11 @@
                 <i class="material-icons icones">{{ pensamento.favoritado ? 'favorite' : 'favorite_border' }}</i>
             </button>
 
-            <button [disabled]="isNew" routerLink="/editarpensamento/{{pensamento.id}}">
+            <button [disabled]="isNew" [routerLink]="['/editarpensamento', pensamento.id]">
                 <i class="material-icons icones">edit</i>
             </button>
 
-            <button [disabled]="isNew" routerLink="/excluirpensamento/{{pensamento.id}}">
+            <button [disabled]="isNew" [routerLink]="['/excluirpensamento', pensamento.id]">
                 <i class="material-icons icones">delete</i>
             </button>
 

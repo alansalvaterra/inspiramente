@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
   templateUrl: './favoritos-pensamento.component.html',
   styleUrl: './favoritos-pensamento.component.css'
 })
+
 export class FavoritosPensamentoComponent {
   constructor(
     private router: Router,

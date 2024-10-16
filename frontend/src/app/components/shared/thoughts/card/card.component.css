@@ -11,9 +11,9 @@
 }
 
 .mensagem {
+    display: flex;
     font-size: 1.2rem;
     text-align: center;
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -29,14 +29,11 @@
     text-transform: uppercase;
     text-align: end;
     margin-top: 2px;
-    display: flex;
     justify-content: flex-end;
-    flex-direction: column;
 }
 
 
 .container_icones {
-    display: flex;
     justify-content: flex-end;
     gap: 10px;
 }

@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './editar-pensamento.component.html',
   styleUrl: './editar-pensamento.component.css'
 })
+
 export class EditarPensamentoComponent {
   pensamento: IPensamento = {
     id: 0,
@@ -33,21 +34,30 @@ export class EditarPensamentoComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
     if (id) {
-      this.service.listarPorId(parseInt(id!, 10)).subscribe((pensamento) => {
-        this.pensamento = pensamento;
-      });
+      const pensamentoEncontrado = this.service.listarPorId(parseInt(id, 10));
+
+      if (pensamentoEncontrado) {
+        this.pensamento = pensamentoEncontrado;
+      } else {
+        this.snackBar.open('Pensamento não encontrado!', 'Fechar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+        this.router.navigate(['/home']);
+      }
     }
   }
 
   editaPensamento(pensamento: IPensamento): void {
-    this.service.editaPensamento(pensamento).subscribe(() => {
-      this.router.navigate(['/home']);
-      this.snackBar.open('Pensamento editado com sucesso!', 'Fechar', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-      });
+    this.service.editarPensamento(pensamento);
+    this.router.navigate(['/home']);
+    this.snackBar.open('Pensamento editado com sucesso!', 'Fechar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
   }
 

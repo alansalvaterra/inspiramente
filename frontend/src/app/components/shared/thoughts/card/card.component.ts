@@ -8,8 +8,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-card',
   standalone: true,
   imports: [
-    RouterModule
-    ,CommonModule
+    RouterModule,
+    CommonModule
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
@@ -24,10 +24,15 @@ export class CardComponent {
 
   alteraFavorito() {
     const novoFavorito = !this.pensamento.favoritado;
+    this.service.favoritar(this.pensamento.id!, novoFavorito);
+    this.pensamento.favoritado = novoFavorito;
+  }
 
-    this.service.favoritar(this.pensamento.id!, novoFavorito).subscribe(() => {
-      this.pensamento.favoritado = novoFavorito;
-    });
+  excluirPensamento(): void {
+    if (this.pensamento.id) {
+      console.log('Excluindo pensamento com ID:', this.pensamento.id);
+      this.service.deletarPensamento(this.pensamento.id);
+    }
   }
 
 }

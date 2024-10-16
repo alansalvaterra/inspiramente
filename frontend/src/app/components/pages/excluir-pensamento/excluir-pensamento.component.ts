@@ -33,26 +33,35 @@ export class ExcluirPensamentoComponent {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.service.listarPorId(parseInt(id!)).subscribe((pensamento) => {
-      this.pensamento = pensamento
-    })
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      const pensamentoEncontrado = this.service.listarPorId(parseInt(id, 10));
+      if (pensamentoEncontrado) {
+        this.pensamento = pensamentoEncontrado;
+      } else {
+        this.snackBar.open('Pensamento não encontrado!', 'Fechar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+        this.router.navigate(['/home']);
+      }
+    }
   }
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
   }
 
-  excluirPensamento() {
+  excluirPensamento(): void {
     if (this.pensamento.id) {
-      this.service.deletaPensamento(this.pensamento.id).subscribe(() => {
-        this.router.navigate(['/home'])
-        this.snackBar.open('Pensamento excluído com sucesso!', 'Fechar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-        })
-      })
+      this.service.deletarPensamento(this.pensamento.id);
+      this.router.navigate(['/home']);
+      this.snackBar.open('Pensamento excluído com sucesso!', 'Fechar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
     }
   }
 }
