@@ -1,3 +1,19 @@
+# TODO List
+
+CONCLUIDO 1 - Estilo geral e responsividade 
+CONCLUIDO 2 - Atualizar a aplicação para persistir dados em sessionStorage ou localStorage com um comentário padrão na tela home.
+3 - Adicionar funcionalidade de opcao de modelo 1, 2 e 3
+4 - Paginacao e informação de quantidade de pensamentos existem no mural
+5 - Botao deletar todos os pensamentos e retornar apenas o pensamento padrão
+6 - Revisão estilo e responsividade
+7 - Alterar caminho dos imports para caminho absoluto
+8 - Testes
+9 - Deploy
+10 - Documentacao
+
+BUG: Não consigo remover o pensamento padrão
+
+
 # PraticandoAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
