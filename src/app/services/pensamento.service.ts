@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IPensamento } from '../interfaces/IPensamento';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +11,31 @@ export class PensamentoService {
 
   private STORAGE_KEY = 'pensamentos';
 
-  constructor() { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   salvarPensamento(pensamento: IPensamento): void {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
-    let pensamentos: IPensamento[] = pensamentosSalvos ? JSON.parse(pensamentosSalvos) : [];
-    const novoId = pensamentos.length > 0 ? Math.max(...pensamentos.map(p => p.id || 0)) + 1 : 1; // Calcula o novo ID baseado no maior ID existente
-    
-    pensamento.id = novoId;
-    pensamentos.push(pensamento);
-    sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+      let pensamentos: IPensamento[] = pensamentosSalvos ? JSON.parse(pensamentosSalvos) : [];
+      const novoId = pensamentos.length > 0 ? Math.max(...pensamentos.map(p => p.id || 0)) + 1 : 1; // Calcula o novo ID baseado no maior ID existente
+
+      pensamento.id = novoId;
+      pensamentos.push(pensamento);
+      sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+    }
+
   }
 
   listar(): IPensamento[] {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
-    return pensamentosSalvos ? JSON.parse(pensamentosSalvos) : [];
+
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+      return pensamentosSalvos ? JSON.parse(pensamentosSalvos) : [];
+    } else {
+      return [];
+    }
   }
 
   listarPorId(id: number): IPensamento | undefined {
@@ -82,3 +94,4 @@ export class PensamentoService {
     return [];
   }
 }
+
