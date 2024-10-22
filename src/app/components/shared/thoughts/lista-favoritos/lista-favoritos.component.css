@@ -9,28 +9,13 @@
     max-width: 100%; 
 }
 
-/* .container app-card {
-    flex-basis: calc(100% - 2rem);
-    max-width: 100%;
-} */
-
-@media (min-width: 600px) {
-    .container app-card {
-        flex-basis: calc(50% - 2rem); /* Dois cards por linha */
-        max-width: 50%;
-    }
+.cards-container-vazio {
+    padding: 10px 30px;
+    text-align: center;
 }
 
-@media (min-width: 900px) {
-    .container app-card {
-        flex-basis: calc(33.33% - 2rem); /* Três cards por linha */
-        max-width: 33.33%;
-    }
+.cards-container-vazio-texto {
+    font-size: 1.8rem;
+    font-weight: normal;
 }
 
-@media (min-width: 1200px) {
-    .container app-card {
-        flex-basis: calc(25% - 2rem); /* Quatro cards por linha em telas grandes */
-        max-width: 25%;
-    }
-}

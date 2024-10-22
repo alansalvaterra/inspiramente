@@ -54,14 +54,24 @@ export class ExcluirPensamentoComponent {
   }
 
   excluirPensamento(): void {
+    if (this.pensamento.id === 1) {
+      this.snackBar.open('O pensamento padrão não pode ser deletado', 'Fechar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      },);
+      this.router.navigate(['/home']);
+      return;
+    }
+
     if (this.pensamento.id) {
       this.service.deletarPensamento(this.pensamento.id);
-      this.router.navigate(['/home']);
       this.snackBar.open('Pensamento excluído com sucesso!', 'Fechar', {
         duration: 3000,
         horizontalPosition: 'center',
         verticalPosition: 'top',
       });
+      this.router.navigate(['/home']);
     }
   }
 }

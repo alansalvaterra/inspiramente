@@ -3,3 +3,7 @@
     <app-card [pensamento]="pensamento"></app-card>
   </div>
 </section>
+
+<section class="cards-container-vazio" *ngIf="listaPensamentosFavoritos.length === 0">
+  <h3 class="cards-container-vazio-texto">Poxa, você ainda não favoritou nenhum pensamento.<br>Retorne ao Mural de Pensamentos e escolha os seus favoritos.</h3>
+</section>
