@@ -27,7 +27,7 @@
     </div>
     <p class="alertaTamanhoMensagem">Caracteres restantes: {{ 20 - (formulario.get('autor')?.value?.length || 0) }}</p>
 
-    <h4>Estilo:</h4>
+    <!-- <h4>Estilo:</h4>
     <ul>
       <li>
         <label for="modelo1">
@@ -41,7 +41,7 @@
           Modelo 2
         </label>
       </li>
-    </ul>
+    </ul> -->
     <div *ngIf="formulario.get('modelo')?.invalid && formulario.get('modelo')?.touched" class="erro">
       <p>É necessário selecionar um modelo.</p>
     </div>

@@ -12,14 +12,14 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent {
   @Input() pensamento!: IPensamento;
   @Input() isNew: boolean = false;
 
   constructor(
-    private service: PensamentoService
+    private service: PensamentoService,
   ) { }
 
   alteraFavorito() {
@@ -34,5 +34,4 @@ export class CardComponent {
       this.service.deletarPensamento(this.pensamento.id);
     }
   }
-
 }

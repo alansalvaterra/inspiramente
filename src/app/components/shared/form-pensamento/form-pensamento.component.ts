@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './form-pensamento.component.html',
-  styleUrl: './form-pensamento.component.css',
+  styleUrls: ['./form-pensamento.component.css'],
 })
 
 export class FormPensamentoComponent {

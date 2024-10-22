@@ -4,6 +4,8 @@ import { IPensamento } from '../../../interfaces/IPensamento';
 import { PensamentoService } from '../../../services/pensamento.service';
 import { FormPensamentoComponent } from '../../shared/form-pensamento/form-pensamento.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-novo-pensamento',
@@ -26,14 +28,17 @@ export class NovoPensamentoComponent {
     private service: PensamentoService,
     private router: Router,
     private snackBar: MatSnackBar,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
-    const pensamentosSalvos = sessionStorage.getItem('pensamentos');
-
-    if (pensamentosSalvos) {
-      this.pensamentos = JSON.parse(pensamentosSalvos);
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem('pensamentos');
+      if (pensamentosSalvos) {
+        this.pensamentos = JSON.parse(pensamentosSalvos);
+      }
     }
+
   }
 
   salvarPensamento(pensamento: IPensamento): void {
