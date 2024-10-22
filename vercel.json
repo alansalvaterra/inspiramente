@@ -1,13 +1,11 @@
 {
-  "version": 2,
-  "builds": [
+"rewrites": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-builds"
+  
+"source": "/(.*)",
+      
+    
+"destination": "/index.html"
     }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
