@@ -39,59 +39,72 @@ export class PensamentoService {
   }
 
   listarPorId(id: number): IPensamento | undefined {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
 
-    if (pensamentosSalvos) {
-      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
-      return pensamentos.find(p => p.id === id);
+      if (pensamentosSalvos) {
+        let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+        return pensamentos.find(p => p.id === id);
+      }
+      return undefined;
     }
     return undefined;
   }
 
   deletarPensamento(id: number): void {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
 
-    if (pensamentosSalvos) {
-      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
-      pensamentos = pensamentos.filter(p => p.id !== id);
-      sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+      if (pensamentosSalvos) {
+        let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+        pensamentos = pensamentos.filter(p => p.id !== id);
+        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+      }
     }
   }
 
   editarPensamento(pensamentoEditado: IPensamento): void {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
 
-    if (pensamentosSalvos) {
-      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
-      const index = pensamentos.findIndex(p => p.id === pensamentoEditado.id);
-      if (index !== -1) {
-        pensamentos[index] = pensamentoEditado;
-        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+      if (pensamentosSalvos) {
+        let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+        const index = pensamentos.findIndex(p => p.id === pensamentoEditado.id);
+        if (index !== -1) {
+          pensamentos[index] = pensamentoEditado;
+          sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+        }
       }
     }
   }
 
   favoritar(id: number, favoritado: boolean): void {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
 
-    if (pensamentosSalvos) {
-      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
-      const index = pensamentos.findIndex(p => p.id === id);
-      if (index !== -1) {
-        pensamentos[index].favoritado = favoritado;
-        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+      if (pensamentosSalvos) {
+        let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+        const index = pensamentos.findIndex(p => p.id === id);
+        if (index !== -1) {
+          pensamentos[index].favoritado = favoritado;
+          sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(pensamentos));
+        }
       }
     }
   }
 
   listarFavoritos(): IPensamento[] {
-    const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      const pensamentosSalvos = sessionStorage.getItem(this.STORAGE_KEY);
 
-    if (pensamentosSalvos) {
-      let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
-      return pensamentos.filter(p => p.favoritado === true);
+      if (pensamentosSalvos) {
+        let pensamentos: IPensamento[] = JSON.parse(pensamentosSalvos);
+        return pensamentos.filter(p => p.favoritado === true);
+      }
+      return [];
+    } else {
+      return [];
     }
-    return [];
   }
 }
 
