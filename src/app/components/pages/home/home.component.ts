@@ -28,7 +28,8 @@ export class HomeComponent {
     if (this.listaPensamentos.length === 0) {
       const pensamentoBoasVindas: IPensamento = {
         id: 1,
-        mensagem: 'Seja bem-vindo ao Inspiramente! 💡\n\nAqui você pode criar, editar e favoritar os seus pensamentos.\n\nEste projeto está em constante evolução, e seu feedback é muito bem-vindo! Fale comigo pelo WhatsApp.',
+        // mensagem: 'Seja bem-vindo ao Inspiramente! 💡\n\nAqui você pode criar, editar e favoritar os seus pensamentos.\n\nEste projeto está em constante evolução, e seu feedback é muito bem-vindo! Fale comigo pelo WhatsApp.',
+        mensagem: 'Inspiramente: Um projeto didático para guardar pensamentos! 💡\n\n Crie os seus pensamentos, teste-os e me dê feedback. Sua opinião é essencial para minha evolução! 🚀',
         autor: 'Alan Salvaterra',
         modelo: 1
       };
